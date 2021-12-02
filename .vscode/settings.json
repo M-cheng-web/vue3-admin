@@ -1,7 +1,0 @@
-{
-  "git.enableSmartCommit": true,
-  "i18n-ally.localesPaths": [
-    "src/locales",
-    "src/locales/lang"
-  ]
-}
