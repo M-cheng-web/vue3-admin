@@ -1,20 +1,18 @@
 import { defineConfig } from 'vite'
-const path = require('path');
 import vue from '@vitejs/plugin-vue'
-import { viteMockServe } from 'vite-plugin-mock';
+import { viteMockServe } from 'vite-plugin-mock'
 
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+const path = require('path')
 
-
-const isDev = process.env.NODE_ENV === 'development';
-
+const isDev = process.env.NODE_ENV === 'development'
 
 export default defineConfig({
   plugins: [
     vue(),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver()]
     }),
     viteMockServe({
       mockPath: 'mock',
@@ -24,8 +22,8 @@ export default defineConfig({
       injectCode: `
           import { setupProdMockServer } from './mockProdServer';
           setupProdMockServer();
-        `,
-    }),
+        `
+    })
   ],
 
   resolve: {
@@ -34,16 +32,16 @@ export default defineConfig({
       views: path.resolve(__dirname, 'src/views'),
       styles: path.resolve(__dirname, 'src/styles'),
       api: path.resolve(__dirname, 'src/api'),
-      '@': path.resolve(__dirname, 'src'),
-    },
+      '@': path.resolve(__dirname, 'src')
+    }
   },
 
   css: {
     preprocessorOptions: {
       // 引入公用的样式
       scss: {
-        additionalData: `@use "@/styles/index.scss" as *;`,
-      },
-    },
-  },
+        additionalData: '@use "@/styles/index.scss" as *;'
+      }
+    }
+  }
 })

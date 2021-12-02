@@ -2,6 +2,7 @@
   "name": "cxh",
   "version": "0.0.0",
   "scripts": {
+    "lint": "eslint \"src/**/*.{js,vue}\"",
     "dev": "cross-env NODE_ENV=development vite",
     "dev:pro": "vite --mode production",
     "build": "vite build --mode production",
@@ -19,8 +20,16 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.9.3",
+    "@vitejs/plugin-vue": "^1.10.1",
+    "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.3",
+    "eslint": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-vue": "^8.1.1",
     "sass": "^1.44.0",
     "unplugin-vue-components": "^0.17.2",
     "vite": "^2.6.4",

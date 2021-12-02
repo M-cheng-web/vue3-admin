@@ -5,15 +5,15 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+// import { ref } from 'vue'
 
 export default {
-  setup() {
+  setup () {
     return {
 
-    };
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>

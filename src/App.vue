@@ -11,11 +11,11 @@
 </template>
 
 <script setup>
-import { getResouceList } from 'api/index';
-import { useI18n } from 'vue-i18n';
-const { t } = useI18n();
+import { getResouceList } from 'api/index'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
-getResouceList();
+getResouceList()
 </script>
 
 <style>
