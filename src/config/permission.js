@@ -1,7 +1,7 @@
 /**
- * @author hujiangjun 1217437592@qq.com
  * @description 路由控制
  */
+
 import router from '@/router'
 import store from '@/store'
 import NProgress from 'nprogress'
@@ -58,7 +58,6 @@ router.beforeResolve(async (to, from, next) => {
       }
     }
   } else {
-    // 免登录路由
     if (routesWhiteList.indexOf(to.path) !== -1) {
       next()
     } else {
@@ -70,12 +69,15 @@ router.beforeResolve(async (to, from, next) => {
       NProgressAction('done')
     }
   }
+
   document.title = getPageTitle(to.meta.title)
 })
-router.afterEach(() => {
-  NProgressAction('done')
-})
 
+router.afterEach(() => { NProgressAction('done') })
+
+/**
+ * 操控 NProgress start/done
+ */
 function NProgressAction (type) {
   if (progressBar) {
     type === 'done' ? NProgress.done() : NProgress.start()

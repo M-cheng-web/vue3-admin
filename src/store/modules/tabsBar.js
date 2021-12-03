@@ -1,9 +1,9 @@
 /**
- * @description 路由tabbar
+ * @description 路由-tabbar
  */
 
 const state = {
-  visitedRoutes: []
+  visitedRoutes: [] // tabbar栏展示的路由
 }
 
 const getters = {
@@ -52,59 +52,103 @@ const mutations = {
   }
 }
 const actions = {
+  /**
+   * 添加tabBar
+   */
   addVisitedRoute ({ commit }, route) {
     commit('addVisitedRoute', route)
   },
+  /**
+   * 删除tabBar
+   * 返回对象格式
+   */
   async delRoute ({ dispatch, state }, route) {
     await dispatch('delVisitedRoute', route)
     return {
       visitedRoutes: [...state.visitedRoutes]
     }
   },
+  /**
+   * 删除tabBar
+   * 返回数组格式
+   */
   delVisitedRoute ({ commit, state }, route) {
     commit('delVisitedRoute', route)
     return [...state.visitedRoutes]
   },
+  /**
+   * 删除其他tabBar
+   * 返回对象格式
+   */
   async delOthersRoutes ({ dispatch, state }, route) {
     await dispatch('delOthersVisitedRoute', route)
     return {
       visitedRoutes: [...state.visitedRoutes]
     }
   },
+  /**
+   * 删除左侧tabBar
+   */
   async delLeftRoutes ({ dispatch, state }, route) {
     await dispatch('delLeftVisitedRoute', route)
     return {
       visitedRoutes: [...state.visitedRoutes]
     }
   },
+  /**
+   * 删除右侧tabBar
+   */
   async delRightRoutes ({ dispatch, state }, route) {
     await dispatch('delRightVisitedRoute', route)
     return {
       visitedRoutes: [...state.visitedRoutes]
     }
   },
+  /**
+   * 删除其他tabBar
+   * 返回数组格式
+   */
   delOthersVisitedRoute ({ commit, state }, route) {
     commit('delOthersVisitedRoute', route)
     return [...state.visitedRoutes]
   },
+  /**
+   * 删除左侧tabBar
+   * 返回数组格式
+   */
   delLeftVisitedRoute ({ commit, state }, route) {
     commit('delLeftVisitedRoute', route)
     return [...state.visitedRoutes]
   },
+  /**
+   * 删除右侧tabBar
+   * 返回数组格式
+   */
   delRightVisitedRoute ({ commit, state }, route) {
     commit('delRightVisitedRoute', route)
     return [...state.visitedRoutes]
   },
+  /**
+   * 删除所有tabBar
+   * 返回对象格式
+   */
   async delAllRoutes ({ dispatch, state }, route) {
     await dispatch('delAllVisitedRoutes', route)
     return {
       visitedRoutes: [...state.visitedRoutes]
     }
   },
+  /**
+   * 删除所有tabBar
+   * 返回数组格式
+   */
   delAllVisitedRoutes ({ commit, state }) {
     commit('delAllVisitedRoutes')
     return [...state.visitedRoutes]
   },
+  /**
+   * 更改目标tabBar
+   */
   updateVisitedRoute ({ commit }, route) {
     commit('updateVisitedRoute', route)
   }

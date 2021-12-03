@@ -1528,6 +1528,11 @@ isexe@^2.0.0:
   resolved "https://registry.npm.taobao.org/isexe/download/isexe-2.0.0.tgz"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
+js-cookie@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.nlark.com/js-cookie/download/js-cookie-3.0.1.tgz#9e39b4c6c2f56563708d7d31f6f5f21873a92414"
+  integrity sha1-njm0xsL1ZWNwjX0x9vXyGHOpJBQ=
+
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.nlark.com/js-tokens/download/js-tokens-4.0.0.tgz?cache=0&sync_timestamp=1619345098261&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fjs-tokens%2Fdownload%2Fjs-tokens-4.0.0.tgz"
@@ -1693,6 +1698,11 @@ normalize-wheel-es@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmmirror.com/normalize-wheel-es/download/normalize-wheel-es-1.1.1.tgz?cache=0&sync_timestamp=1635733915391&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fnormalize-wheel-es%2Fdownload%2Fnormalize-wheel-es-1.1.1.tgz"
   integrity sha1-qAlttqVvlDMtiE/Y6+2ojy/HlWk=
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npm.taobao.org/nprogress/download/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
 
 object-inspect@^1.11.0, object-inspect@^1.9.0:
   version "1.11.0"

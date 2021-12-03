@@ -1,20 +1,22 @@
+/**
+ * @description 用户相关
+ */
+
 import { getUserInfo, login } from '@/api/user'
 import { getAccessToken, removeAccessToken, setAccessToken } from '@/utils/accessToken'
-
 import { setting } from '@/config/setting'
 import { resetRouter } from '@/router'
-
 import i18n from '@/locales'
-
 import { ElMessage, ElNotification } from 'element-plus'
+
 const { title, tokenName } = setting
 const { global } = i18n
 
 const state = {
-  accessToken: getAccessToken(),
-  username: '',
-  avatar: '',
-  permissions: []
+  accessToken: getAccessToken(), // token
+  username: '', // 用户名
+  avatar: '', // 头像
+  permissions: [] // 权限
 }
 
 const getters = {
@@ -42,6 +44,9 @@ const actions = {
   setPermissions ({ commit }, permissions) {
     commit('setPermissions', permissions)
   },
+  /**
+   * 用户登录
+   */
   async login ({ commit }, userInfo) {
     const { data } = await login(userInfo)
     const accessToken = data[tokenName]
@@ -59,14 +64,17 @@ const actions = {
                 ? global.t('sayHi.afternoon')
                 : global.t('sayHi.evening')
       ElNotification({
-        title: `${thisTime}！`,
+        title: `${thisTime}!`,
         message: `${global.t('notice.msg')}${title}!`,
         type: 'success'
       })
     } else {
-      ElMessage.error(`登录接口异常，未正确返回${tokenName}...`)
+      ElMessage.error(`登录接口异常,未正确返回${tokenName}...`)
     }
   },
+  /**
+   * 获取用户信息
+   */
   async getUserInfo ({ commit, state }) {
     const { data } = await getUserInfo(state.accessToken)
     if (!data) {
@@ -84,11 +92,17 @@ const actions = {
       return false
     }
   },
+  /**
+   * 用户退出登录
+   */
   async logout ({ dispatch }) {
     // await logout(state.accessToken);
     await dispatch('resetAccessToken')
     await resetRouter()
   },
+  /**
+   * 清空用户相关信息
+   */
   resetAccessToken ({ commit }) {
     commit('setPermissions', [])
     commit('setAccessToken', '')

@@ -1,11 +1,12 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-// import Layout from '@/layouts/index.vue';
-// import i18n from '@/locales';
-// const { global } = i18n;
+import Layout from '@/layouts/index.vue'
+// import i18n from '@/locales'
+// const { global } = i18n
 
 export const constantRoutes = [
   {
     path: '/',
+    component: Layout,
     redirect: '/login'
   },
   {
@@ -29,7 +30,7 @@ export const constantRoutes = [
     hidden: true
   }
 ]
-
+export const asyncRoutes = []
 // export const asyncRoutes = [
 //   {
 //     path: '/',
@@ -147,7 +148,7 @@ export const constantRoutes = [
 // ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHashHistory(), // 设置为 hash模式
   routes: constantRoutes
 })
 
