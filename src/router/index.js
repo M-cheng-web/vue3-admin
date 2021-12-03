@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router'
 // import Layout from '@/layouts/index.vue';
 // import i18n from '@/locales';
 // const { global } = i18n;
@@ -6,29 +6,29 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 export const constantRoutes = [
   {
     path: '/',
-    redirect: '/login',
+    redirect: '/login'
   },
   {
     path: '/login',
     component: () => import('@/views/login/index.vue'),
     meta: {
-      title: '登录',
+      title: '登录'
     },
-    // hidden: true,
+    hidden: true
   },
-  // {
-  //   path: '/401',
-  //   name: '401',
-  //   component: () => import('@/views/errorPage/401.vue'),
-  //   hidden: true,
-  // },
-  // {
-  //   path: '/404',
-  //   name: '404',
-  //   component: () => import('@/views/errorPage/404.vue'),
-  //   hidden: true,
-  // },
-];
+  {
+    path: '/401',
+    name: '401',
+    component: () => import('@/views/errorPage/401.vue'),
+    hidden: true
+  },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('@/views/errorPage/404.vue'),
+    hidden: true
+  }
+]
 
 // export const asyncRoutes = [
 //   {
@@ -148,17 +148,17 @@ export const constantRoutes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: constantRoutes,
-});
+  routes: constantRoutes
+})
 
 // 重置路由
-export function resetRouter() {
+export function resetRouter () {
   router.getRoutes().forEach((route) => {
-    const { name } = route;
+    const { name } = route
     if (name) {
-      router.hasRoute(name) && router.removeRoute(name);
+      router.hasRoute(name) && router.removeRoute(name)
     }
-  });
+  })
 }
 
-export default router;
+export default router

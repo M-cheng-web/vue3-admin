@@ -8,6 +8,7 @@ import router from './router/index'
 
 // vuex
 import store from './store'
+
 // 注册字节跳动图标
 import iconPark from './plugin/icon-park'
 

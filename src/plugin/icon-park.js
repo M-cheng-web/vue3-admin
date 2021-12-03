@@ -57,9 +57,11 @@ import {
   ChartHistogram,
   MultiPictureCarousel,
   Theme,
-  Translate,
-} from '@icon-park/vue-next';
-import '@icon-park/vue-next/styles/index.css';
+  Translate
+} from '@icon-park/vue-next'
+import '@icon-park/vue-next/styles/index.css'
+
+import SvgIcon from '@/components/SvgIcon/index.vue'
 // el-icon
 // 所需的组件
 export const components = [
@@ -111,14 +113,12 @@ export const components = [
   ChartHistogram,
   MultiPictureCarousel,
   Theme,
-  Translate,
-];
-
-import SvgIcon from '@/components/SvgIcon/index.vue';
+  Translate
+]
 // 注册
 export default (app) => {
-  app.component('svg-icon', SvgIcon);
+  app.component('svg-icon', SvgIcon)
   components.forEach((component) => {
-    app.component(component.name.replace('icon-', ''), component);
-  });
-};
+    app.component(component.name.replace('icon-', ''), component)
+  })
+}

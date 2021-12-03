@@ -5,30 +5,30 @@
 </template>
 
 <script setup>
-  import { defineProps, computed } from 'vue';
+import { computed } from 'vue'
 
-  const props = defineProps({
-    name: {
-      type: String,
-      required: true,
-    },
-    color: {
-      type: String,
-      default: '',
-    },
-    size: {
-      type: String,
-      default: '14px',
-    },
-  });
+const props = defineProps({
+  name: {
+    type: String,
+    required: true
+  },
+  color: {
+    type: String,
+    default: ''
+  },
+  size: {
+    type: String,
+    default: '14px'
+  }
+})
 
-  const iconName = computed(() => `#icon-${props.name}`);
-  const svgClass = computed(() => {
-    if (props.name) {
-      return `svg-icon icon-${props.name}`;
-    }
-    return 'svg-icon';
-  });
+const iconName = computed(() => `#icon-${props.name}`)
+const svgClass = computed(() => {
+  if (props.name) {
+    return `svg-icon icon-${props.name}`
+  }
+  return 'svg-icon'
+})
 </script>
 
 <style lang="scss">

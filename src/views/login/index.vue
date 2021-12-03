@@ -8,6 +8,7 @@
 // import { ref } from 'vue'
 
 export default {
+  name: 'LoginStart',
   setup () {
     return {
 

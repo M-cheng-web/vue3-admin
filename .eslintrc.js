@@ -9,11 +9,15 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 10,
-    sourceType: 'module'
+    sourceType: 'module',
+    parser: 'babel-eslint'
   },
   plugins: [
     'vue'
   ],
   rules: {
+  },
+  globals: {
+    defineProps: 'readonly'
   }
 }

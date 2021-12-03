@@ -14,7 +14,7 @@ export default {
     mixedChart: 'Other',
     errorPages: 'Error Pages',
     page401: '401',
-    page404: '404',
+    page404: '404'
   },
   navbar: {
     logOut: 'Log Out',
@@ -27,14 +27,14 @@ export default {
     fold: 'Fold',
     unfold: 'Unfold',
     size: 'Global Size',
-    profile: 'Profile',
+    profile: 'Profile'
   },
 
   login: {
     title: 'Login',
     rules: {
       username: 'Please enter a username',
-      password: 'Please enter your password',
+      password: 'Please enter your password'
     },
     loginBtn: 'Login',
     desc: 'Out of the box in the background management system',
@@ -43,7 +43,7 @@ export default {
     password: 'Password',
     thirdparty: 'Third-party Login',
     rememberPwd: 'Remember the password',
-    forgotPwd: 'Forgot password',
+    forgotPwd: 'Forgot password'
   },
   register: {
     title: 'Register',
@@ -53,7 +53,7 @@ export default {
     smsbtn: 'Get Code',
     password: 'Password',
     confirmPwd: 'Confirm Password',
-    checkText: 'I agree with XXX Privacy Policy',
+    checkText: 'I agree with XXX Privacy Policy'
   },
   theme: {
     change: 'Change Theme',
@@ -66,15 +66,15 @@ export default {
       theme3: 'Green white',
       theme4: 'Green black',
       theme5: 'Red white',
-      theme6: 'Red black',
-    },
+      theme6: 'Red black'
+    }
   },
   tagsView: {
     refresh: 'Refresh',
     closeLeft: 'Close Left',
     closeRight: 'Close Right',
     closeOthers: 'Close Others',
-    closeAll: 'Close All',
+    closeAll: 'Close All'
   },
   settings: {
     title: 'Theme Settings',
@@ -89,26 +89,26 @@ export default {
     refresh: 'Refresh',
     notice: 'Notice',
     defaultBtn: 'Restore the default',
-    saveBtn: 'Save',
+    saveBtn: 'Save'
   },
   layout: {
     vertical: 'Vertical',
-    horizontal: 'Horizontal',
+    horizontal: 'Horizontal'
   },
   sayHi: {
     early: 'Good early morning',
     morning: 'Good morning',
     noon: 'Good noon',
     afternoon: 'Good afternoon',
-    evening: 'Good evening',
+    evening: 'Good evening'
   },
   notice: {
-    msg: 'Welcome to ',
+    msg: 'Welcome to '
   },
   tabs: {
     notice: 'Notice',
     message: 'Message',
-    email: 'EMail',
+    email: 'EMail'
   },
   indexPage: {
     descTitle: 'Start your day!',
@@ -117,11 +117,11 @@ export default {
     order: {
       planned: 'Planned',
       finished: 'Completed',
-      unfinished: 'Outstanding',
+      unfinished: 'Outstanding'
     },
     skillTitle: 'The skills list',
     envTitle: 'Production environments depend on information',
-    chartTitle: 'Smoothed Line Chart',
+    chartTitle: 'Smoothed Line Chart'
   },
   errorPages: {
     title: 'Sorry!',
@@ -129,13 +129,13 @@ export default {
     404: {
       desc: 'Current page does not exist...',
       remark:
-        'Please check whether the url you entered is correct, or click the button below to return to the home page',
+        'Please check whether the url you entered is correct, or click the button below to return to the home page'
     },
     401: {
       desc: "You don't have permission to go to this page...",
       remark:
-        'Please contact the administrator or click the button below to return to the home page',
-    },
+        'Please contact the administrator or click the button below to return to the home page'
+    }
   },
   echarts: {
     demo: 'Demo',
@@ -143,12 +143,12 @@ export default {
       title: 'Line',
       demo1Title: 'Stacked area chart',
       demo2Title: 'Smoothed Line Chart',
-      demo3Title: 'Stacked area chart',
+      demo3Title: 'Stacked area chart'
     },
     bar: {
       title: 'Bar',
       demo1Title: 'Basic Bar',
-      demo2Title: 'The amount of evaporation and precipitation in an area',
+      demo2Title: 'The amount of evaporation and precipitation in an area'
     },
     other: {
       title: 'Other Charts',
@@ -157,8 +157,8 @@ export default {
       demo3Title: 'Doughnut Chart with Rounded Corner',
       demo4Title: 'Basic Radar Chart',
       demo5Title: 'Simple Gauge',
-      demo6Title: 'Funnel Chart',
-    },
+      demo6Title: 'Funnel Chart'
+    }
   },
   iconPage: {
     title: 'Icons',
@@ -169,8 +169,8 @@ export default {
       label2: 'Type',
       label3: 'Options',
       label4: 'Default',
-      label5: 'Descrition',
-    },
+      label5: 'Descrition'
+    }
   },
   element: {
     title: 'Element-Plus Demo',
@@ -178,14 +178,14 @@ export default {
     radio: 'Radio',
     checkBox: 'CheckBox',
     datePicker: 'DatePicker',
-    dateTimePicker: 'DataTimePicker',
+    dateTimePicker: 'DataTimePicker'
   },
   confirm: {
     title: 'Operating hints',
-    msg: 'Are you sure you want to exit',
+    msg: 'Are you sure you want to exit'
   },
   btn: {
     confirm: 'Confirm',
-    cancel: 'Cancel',
-  },
-};
+    cancel: 'Cancel'
+  }
+}

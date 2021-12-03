@@ -1,10 +1,10 @@
-import { createStore } from 'vuex';
-import getters from './getters.js';
+import { createStore } from 'vuex'
+import getters from './getters.js'
 
 // vite特有的引入方式
 // const modulesFiles = import.meta.globEager('./modules/*.js');
 
-let modules = {};
+const modules = {}
 // for (const path in modulesFiles) {
 //   const moduleName = path.replace(/(.*\/)*([^.]+).*/gi, '$2');
 //   modules[moduleName] = modulesFiles[path].default;
@@ -14,9 +14,10 @@ let modules = {};
 //   modules[key]['namespaced'] = true;
 // });
 
+// eslint-disable-next-line new-cap
 const store = new createStore({
   modules,
-  getters,
-});
+  getters
+})
 
-export default store;
+export default store
