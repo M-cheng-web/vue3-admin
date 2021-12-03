@@ -1,26 +1,26 @@
-import { createApp } from 'vue';
-import App from './App.vue';
+import { createApp } from 'vue'
+import App from './App.vue'
 
-import 'element-plus/theme-chalk/display.css';
+import 'element-plus/theme-chalk/display.css'
 
 // 路由
-import router from '@/router/index';
+import router from './router/index'
 
 // vuex
-import store from '@/store';
-
+import store from './store'
 // 注册字节跳动图标
-import iconPark from './plugin/icon-park';
+import iconPark from './plugin/icon-park'
 
 // 国际化
-import loadI18n from './plugin/i18n';
+import loadI18n from './plugin/i18n'
 
-const app = createApp(App);
-app.use(router);
-app.use(store);
-iconPark(app);
+const app = createApp(App)
+app.use(store)
+app.use(router)
+iconPark(app)
+loadI18n(app)
 
-loadI18n(app);
+app.mount('#app')
 
 // NODE_ENV=development 和 --mode development 有什么差别?
 // 初步验证:
@@ -35,5 +35,3 @@ loadI18n(app);
 
 // 但是
 // 想用mockjs的话  必须用 NODE_ENV=development 的方式才可以 这是为什么?
-
-app.mount('#app');

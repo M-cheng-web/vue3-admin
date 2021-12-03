@@ -8,13 +8,16 @@
 </template>
 
 <script setup>
-import { getResouceList } from 'api/index';
-import { useI18n } from 'vue-i18n';
+import { useI18n } from 'vue-i18n'
+import { getResouceList } from 'api/index'
 
-const { t } = useI18n();
-
-getResouceList();
+const { t } = useI18n()
+getResouceList()
+const a = new Promise((resolve) => {
+  console.log(123)
+  resolve()
+})
+console.log(a)
 </script>
 
-<style>
-</style>
+<style></style>
