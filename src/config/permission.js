@@ -47,11 +47,10 @@ router.beforeResolve(async (to, from, next) => {
           } else if (authentication === 'all') {
             accessRoutes = await store.dispatch('routes/setAllRoutes')
           }
-          accessRoutes.forEach((item) => {
-            router.addRoute(item)
-          })
+          accessRoutes.forEach((item) => { router.addRoute(item) })
           next({ ...to, replace: true })
-        } catch {
+        } catch (e) {
+          console.log('路由报错', e)
           await store.dispatch('user/resetAccessToken')
           NProgressAction('done')
         }

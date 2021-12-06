@@ -3,6 +3,9 @@ import App from './App.vue'
 
 import 'element-plus/theme-chalk/display.css'
 
+// permission 权限文件
+import './config/permission'
+
 // 路由
 import router from './router/index'
 
@@ -15,7 +18,12 @@ import iconPark from './plugin/icon-park'
 // 国际化
 import loadI18n from './plugin/i18n'
 
+// layout的一些组件全局注册
+import layoutComp from './layouts/components/export'
+
 const app = createApp(App)
+layoutComp(app)
+
 app.use(store)
 app.use(router)
 iconPark(app)

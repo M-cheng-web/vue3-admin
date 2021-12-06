@@ -229,9 +229,9 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@popperjs/core@^2.10.2":
+"@popperjs/core@^2.10.1":
   version "2.11.0"
-  resolved "https://registry.npmmirror.com/@popperjs/core/download/@popperjs/core-2.11.0.tgz"
+  resolved "https://registry.npmmirror.com/@popperjs/core/download/@popperjs/core-2.11.0.tgz#6734f8ebc106a0860dff7f92bf90df193f0935d7"
   integrity sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ==
 
 "@rollup/plugin-node-resolve@^13.0.4":
@@ -395,18 +395,18 @@
   resolved "https://registry.npmmirror.com/@vue/shared/download/@vue/shared-3.2.23.tgz"
   integrity sha512-U+/Jefa0QfXUF2qVy9Dqlrb6HKJSr9/wJcM66wXmWcTOoqg7hOWzF4qruDle51pyF4x3wMn6TSH54UdjKjCKMA==
 
-"@vueuse/core@^7.0.0":
-  version "7.1.2"
-  resolved "https://registry.npmmirror.com/@vueuse/core/download/@vueuse/core-7.1.2.tgz"
-  integrity sha512-SLoOPfhZdNRNUkZfx+wrHj6WycWdSw2RmNS8E4ngQ2kmBoJjRarGy51/GkGdjqHQqmhuwuFoNO2WaU0yBn3ffg==
+"@vueuse/core@^6.2.0":
+  version "6.9.2"
+  resolved "https://registry.npmmirror.com/@vueuse/core/download/@vueuse/core-6.9.2.tgz#76b16d01f33cf367dd1a2d7f2e31d106443ceb8a"
+  integrity sha512-FRwl4ccSFuHZBHLGgS9TMv/+Dd6XFaL4o9nph2qtgQIV+z29RBFokw08XjHfykiENRzB01MjYHJ7iRUnsIFQXg==
   dependencies:
-    "@vueuse/shared" "7.1.2"
+    "@vueuse/shared" "6.9.2"
     vue-demi "*"
 
-"@vueuse/shared@7.1.2":
-  version "7.1.2"
-  resolved "https://registry.npmmirror.com/@vueuse/shared/download/@vueuse/shared-7.1.2.tgz"
-  integrity sha512-AjYh4y9S5FMOoHDsysqcXY/1mpqNTrnWUD50yaaiyf+5kGWQVIpAkkjKZlYSC/NHKxxCRn0cLR4nWMzceUWewQ==
+"@vueuse/shared@6.9.2":
+  version "6.9.2"
+  resolved "https://registry.npmmirror.com/@vueuse/shared/download/@vueuse/shared-6.9.2.tgz#97e4369fa7262ebc96fe1d6e210268f30b037005"
+  integrity sha512-lAiMh6XROs0kSKVd0Yb/6GKoQMxC1fYrFDi6opvQWISPtcqRNluRrQxLUZ3WTI78ovtoKRLktjhkFAtydcfFDg==
   dependencies:
     vue-demi "*"
 
@@ -509,10 +509,10 @@ astral-regex@^2.0.0:
   resolved "https://registry.nlark.com/astral-regex/download/astral-regex-2.0.0.tgz"
   integrity sha1-SDFDxWeu7UeFdZwIZXhtx319LjE=
 
-async-validator@^4.0.7:
-  version "4.0.7"
-  resolved "https://registry.npmmirror.com/async-validator/download/async-validator-4.0.7.tgz?cache=0&sync_timestamp=1634529502627&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fasync-validator%2Fdownload%2Fasync-validator-4.0.7.tgz"
-  integrity sha1-A0oP0hA6ay6/AQ2nUYO+wpkkev4=
+async-validator@^3.4.0:
+  version "3.5.2"
+  resolved "https://registry.npmmirror.com/async-validator/download/async-validator-3.5.2.tgz?cache=0&sync_timestamp=1634529502627&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fasync-validator%2Fdownload%2Fasync-validator-3.5.2.tgz#68e866a96824e8b2694ff7a831c1a25c44d5e500"
+  integrity sha1-aOhmqWgk6LJpT/eoMcGiXETV5QA=
 
 axios@^0.21.1:
   version "0.21.4"
@@ -680,9 +680,9 @@ csstype@^2.6.8:
   resolved "https://registry.npmmirror.com/csstype/download/csstype-2.6.19.tgz"
   integrity sha512-ZVxXaNy28/k3kJg0Fou5MiYpp88j7H9hLZp8PDC3jV0WFjfH5E9xHb56L0W59cPbKbcHXeP4qyT8PrHp8t6LcQ==
 
-dayjs@^1.10.7:
+dayjs@1.x:
   version "1.10.7"
-  resolved "https://registry.nlark.com/dayjs/download/dayjs-1.10.7.tgz?cache=0&sync_timestamp=1631266519235&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdayjs%2Fdownload%2Fdayjs-1.10.7.tgz"
+  resolved "https://registry.nlark.com/dayjs/download/dayjs-1.10.7.tgz?cache=0&sync_timestamp=1631266519235&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdayjs%2Fdownload%2Fdayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
   integrity sha1-LPX5Gt0oEWdIRAhmoKHSbzps5Gg=
 
 debug@2.6.9, debug@^2.6.9:
@@ -742,19 +742,20 @@ ee-first@1.1.1:
   resolved "https://registry.nlark.com/ee-first/download/ee-first-1.1.1.tgz"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-element-plus@^1.2.0-beta.4:
-  version "1.2.0-beta.4"
-  resolved "https://registry.npmmirror.com/element-plus/download/element-plus-1.2.0-beta.4.tgz"
-  integrity sha512-wYOwa/Zop5xMqhqkS7jOd32FF0Y2IpquIu8JLMbmvwlWvRUVetE5RO5lvxiF6etZgq8urRVttisXnOzJ9YOItQ==
+element-plus@1.1.0-beta.10:
+  version "1.1.0-beta.10"
+  resolved "https://registry.npmmirror.com/element-plus/download/element-plus-1.1.0-beta.10.tgz#6336d95d2ec9560cde026ded09676c59aff9b3bf"
+  integrity sha1-YzbZXS7JVgzeAm3tCWdsWa/5s78=
   dependencies:
     "@element-plus/icons" "^0.0.11"
-    "@popperjs/core" "^2.10.2"
-    "@vueuse/core" "^7.0.0"
-    async-validator "^4.0.7"
-    dayjs "^1.10.7"
+    "@popperjs/core" "^2.10.1"
+    "@vueuse/core" "^6.2.0"
+    async-validator "^3.4.0"
+    dayjs "1.x"
     lodash "^4.17.21"
-    memoize-one "^6.0.0"
-    normalize-wheel-es "^1.1.1"
+    mitt "^2.1.0"
+    normalize-wheel "^1.0.1"
+    resize-observer-polyfill "^1.5.1"
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -1625,11 +1626,6 @@ magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.4"
 
-memoize-one@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.npmmirror.com/memoize-one/download/memoize-one-6.0.0.tgz"
-  integrity sha1-slkbhx7YKUiu5HJ9xqvO7qyMEEU=
-
 merge2@^1.3.0:
   version "1.4.1"
   resolved "https://registry.npm.taobao.org/merge2/download/merge2-1.4.1.tgz"
@@ -1654,6 +1650,11 @@ minimist@^1.2.0:
   version "1.2.5"
   resolved "https://registry.npm.taobao.org/minimist/download/minimist-1.2.5.tgz"
   integrity sha1-Z9ZgFLZqaoqqDAg8X9WN9OTpdgI=
+
+mitt@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.nlark.com/mitt/download/mitt-2.1.0.tgz#f740577c23176c6205b121b2973514eade1b2230"
+  integrity sha1-90BXfCMXbGIFsSGylzUU6t4bIjA=
 
 mlly@^0.2.2:
   version "0.2.10"
@@ -1694,10 +1695,10 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   resolved "https://registry.npm.taobao.org/normalize-path/download/normalize-path-3.0.0.tgz"
   integrity sha1-Dc1p/yOhybEf0JeDFmRKA4ghamU=
 
-normalize-wheel-es@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.npmmirror.com/normalize-wheel-es/download/normalize-wheel-es-1.1.1.tgz?cache=0&sync_timestamp=1635733915391&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fnormalize-wheel-es%2Fdownload%2Fnormalize-wheel-es-1.1.1.tgz"
-  integrity sha1-qAlttqVvlDMtiE/Y6+2ojy/HlWk=
+normalize-wheel@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.nlark.com/normalize-wheel/download/normalize-wheel-1.0.1.tgz#aec886affdb045070d856447df62ecf86146ec45"
+  integrity sha1-rsiGr/2wRQcNhWRH32Ls+GFG7EU=
 
 nprogress@^0.2.0:
   version "0.2.0"
@@ -1885,6 +1886,11 @@ require-from-string@^2.0.2:
   resolved "https://registry.npm.taobao.org/require-from-string/download/require-from-string-2.0.2.tgz"
   integrity sha1-iaf92TgmEmcxjq/hT5wy5ZjDaQk=
 
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.nlark.com/resize-observer-polyfill/download/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha1-DpAg3T0hAkRY1OvSfiPkAmmBBGQ=
+
 resolve-from@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npm.taobao.org/resolve-from/download/resolve-from-4.0.0.tgz"
@@ -1931,6 +1937,11 @@ sass@^1.44.0:
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
+
+screenfull@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmmirror.com/screenfull/download/screenfull-6.0.0.tgz?cache=0&sync_timestamp=1635923453416&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fscreenfull%2Fdownload%2Fscreenfull-6.0.0.tgz#6f7f37bfe19c5ee50931ac438c1fe380d5b5ff44"
+  integrity sha1-b383v+GcXuUJMaxDjB/jgNW1/0Q=
 
 semver@^6.1.0:
   version "6.3.0"

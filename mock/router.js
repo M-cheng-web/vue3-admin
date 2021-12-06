@@ -12,10 +12,10 @@ const data = [
           title: '首页',
           icon: 'home',
           affix: true,
-          noKeepAlive: true,
-        },
-      },
-    ],
+          noKeepAlive: true
+        }
+      }
+    ]
   },
   {
     path: '/comp',
@@ -28,7 +28,7 @@ const data = [
         name: 'IconPark',
         component: '',
         meta: {
-          title: '图标',
+          title: '图标'
         },
         children: [
           {
@@ -36,36 +36,36 @@ const data = [
             name: 'IconPark2',
             component: '',
             meta: {
-              title: '图标2211',
-            },
-          },
-        ],
+              title: '图标2211'
+            }
+          }
+        ]
       },
       {
         path: '/iconPark233',
         name: 'IconPark3',
         component: () => '',
         meta: {
-          title: '图标2233',
-        },
+          title: '图标2233'
+        }
       },
       {
         path: '/iconPark234',
         name: 'IconPark3',
         component: () => '',
         meta: {
-          title: '测试',
-        },
-      },
-    ],
-  },
-];
+          title: '测试'
+        }
+      }
+    ]
+  }
+]
 export default [
   {
     url: '/api/menu/navigate',
     type: 'post',
-    response() {
-      return { code: 200, msg: 'success', data: data };
-    },
-  },
-];
+    response () {
+      return { code: 200, msg: 'success', data: data }
+    }
+  }
+]

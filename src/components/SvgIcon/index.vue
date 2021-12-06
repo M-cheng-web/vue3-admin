@@ -8,18 +8,11 @@
 import { computed } from 'vue'
 
 const props = defineProps({
-  name: {
-    type: String,
-    required: true
-  },
-  color: {
-    type: String,
-    default: ''
-  },
-  size: {
-    type: String,
-    default: '14px'
-  }
+  name: { type: String, required: true }, // 图标名
+
+  color: { type: String, default: '' }, // 颜色
+
+  size: { type: String, default: '14px' } // 大小
 })
 
 const iconName = computed(() => `#icon-${props.name}`)
@@ -32,10 +25,10 @@ const svgClass = computed(() => {
 </script>
 
 <style lang="scss">
-  .svg-icon {
-    width: 1em;
-    height: 1em;
-    vertical-align: middle;
-    fill: currentColor;
-  }
+.svg-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+}
 </style>

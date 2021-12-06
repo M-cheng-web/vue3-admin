@@ -35,5 +35,5 @@ export const themeConfig = {
 
   tag: true, // 是否显示标签
 
-  collapse: false // 是否展开菜单
+  collapse: false // 是否折叠菜单
 }

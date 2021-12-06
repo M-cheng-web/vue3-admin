@@ -16,7 +16,7 @@ const state = {
   isMobile: false, // 是否为移动端
   isDrawer: false, // 是否展开移动端菜单
   isFullScreen: false, // 是否显示全屏
-  collapse, // 是否展开菜单
+  collapse, // 是否折叠菜单
   fullScreen, // 是否显示全屏
   refresh, // 是否显示刷新
   mode: getSettings() ? getSettings().mode : mode, // 模式(菜单在上方/在左侧)

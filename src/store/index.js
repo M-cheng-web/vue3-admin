@@ -3,12 +3,6 @@ import getters from './getters.js'
 
 const modulesFiles = import.meta.globEager('./modules/*.js')
 
-// const modules = {}
-// for (const path in modulesFiles) {
-//   const moduleName = path.replace(/(.*\/)*([^.]+).*/gi, '$2')
-//   modules[moduleName] = { ...modulesFiles[path].default, namespaced: true }
-// }
-
 const modules = Object.keys(modulesFiles).reduce((pre, key) => {
   const moduleName = key.replace(/(.*\/)*([^.]+).*/gi, '$2')
   pre[moduleName] = { ...modulesFiles[key].default, namespaced: true }

@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { viteMockServe } from 'vite-plugin-mock'
 import eslintPlugin from 'vite-plugin-eslint'
+import { svgBuilder } from './src/plugin/svgBuilder'
 
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -29,7 +30,8 @@ export default defineConfig({
           import { setupProdMockServer } from './mockProdServer';
           setupProdMockServer();
         `
-    })
+    }),
+    svgBuilder('./src/icons/svg/')
   ],
 
   resolve: {
