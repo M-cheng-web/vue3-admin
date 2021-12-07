@@ -36,7 +36,6 @@
 import { reactive, watch, toRefs, computed, nextTick } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-
 import { useI18n } from 'vue-i18n'
 
 export default {
@@ -79,17 +78,11 @@ export default {
       ]
     })
 
-    const visitedRouteList = computed(() => {
-      return store.getters['tabsBar/visitedRoutes']
-    })
+    const visitedRouteList = computed(() => store.getters['tabsBar/visitedRoutes'])
 
-    const routes = computed(() => {
-      return store.getters['routes/routes']
-    })
+    const routes = computed(() => store.getters['routes/routes'])
 
-    const mode = computed(() => {
-      return store.getters['setting/mode']
-    })
+    const mode = computed(() => store.getters['setting/mode'])
 
     const filterAffixtabs = (routes) => {
       let tabs = []

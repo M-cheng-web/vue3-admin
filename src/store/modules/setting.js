@@ -15,9 +15,9 @@ const state = {
   isDrawerSetting: false, // 是否打开主题设置
   isMobile: false, // 是否为移动端
   isDrawer: false, // 是否展开移动端菜单
-  isFullScreen: false, // 是否显示全屏
+  isFullScreen: false, // 是否在全屏状态下(不在全屏/在全屏)
   collapse, // 是否折叠菜单
-  fullScreen, // 是否显示全屏
+  fullScreen, // 是否需要全屏功能
   refresh, // 是否显示刷新
   mode: getSettings() ? getSettings().mode : mode, // 模式(菜单在上方/在左侧)
   theme, // 主题
@@ -49,11 +49,23 @@ const getters = {
 }
 
 const mutations = {
+  CHANGE_LOGO: (state, flag) => {
+    state.isLogo = flag
+  },
+  CHANGE_FIX_HEAD: (state, flag) => {
+    state.fixedHead = flag
+  },
+  CHANGE_FULL_SCREEN: (state, flag) => {
+    state.fullScreen = flag
+  },
   CHANGE_COLLAPSE: (state) => {
     state.collapse = !state.collapse
   },
-  CHANGE_FULL_SCREEN: (state, flag) => {
-    state.isFullScreen = flag
+  CHANGE_NOTIC: (state, flag) => {
+    state.notice = flag
+  },
+  CHANGE_REFRESH: (state, flag) => {
+    state.refresh = flag
   },
   SET_ROUTER_VIEW: (state) => {
     state.routerView = !state.routerView
@@ -91,21 +103,66 @@ const mutations = {
 
 const actions = {
   /**
+   * 是否显示logo
+   * flag: true | false
+   */
+  changeLogo: ({ commit }, flag) => {
+    commit('CHANGE_LOGO', flag)
+  },
+  /**
+   * 是否显示标签
+   * flag: true | false
+   */
+  changeTag: ({ commit }, flag) => {
+    commit('CHANGE_TAG', flag)
+  },
+  /**
+   * 是否显示面包导航
+   * flag: true | false
+   */
+  changeBreadcrumb: ({ commit }, flag) => {
+    commit('CHANGE_BREADCRUMB', flag)
+  },
+  /**
+   * 是否固定头部
+   * flag: true | false
+   */
+  changeFixHead: ({ commit }, flag) => {
+    commit('CHANGE_FIX_HEAD', flag)
+  },
+  /**
+   * 是否展示全屏图标
+   * flag: true | false
+   */
+  changeFullScreen: ({ commit }, flag) => {
+    commit('CHANGE_FULL_SCREEN', flag)
+  },
+  /**
+   * 是否展示刷新图标
+   * flag: true | false
+   */
+  changeRefresh: ({ commit }, flag) => {
+    commit('CHANGE_REFRESH', flag)
+  },
+  /**
+   * 是否展示通知图标
+   * flag: true | false
+   */
+  changeNotic: ({ commit }, flag) => {
+    commit('CHANGE_NOTIC', flag)
+  },
+
+  /**
    * 切换展开收起
    */
   changeCollapse: ({ commit }) => {
     commit('CHANGE_COLLAPSE')
   },
   /**
-   * 切换是否全屏
-   */
-  changeFullScreen: ({ commit }, flag) => {
-    commit('CHANGE_FULL_SCREEN', flag)
-  },
-  /**
    * 是否刷新路由
    */
   setRouterView: ({ commit }, flag) => {
+    console.log('flag', flag)
     commit('SET_ROUTER_VIEW', flag)
   },
   /**
@@ -133,20 +190,6 @@ const actions = {
    */
   setSettingDrawer: ({ commit }, flag) => {
     commit('CHANGE_SETTING_DRAWER', flag)
-  },
-  /**
-   * 是否显示面包导航
-   * flag: true | false
-   */
-  setBreadcrumb: ({ commit }, flag) => {
-    commit('CHANGE_BREADCRUMB', flag)
-  },
-  /**
-   * 是否显示标签
-   * flag: true | false
-   */
-  setTag: ({ commit }, flag) => {
-    commit('CHANGE_TAG', flag)
   },
   /**
    * 切换布局

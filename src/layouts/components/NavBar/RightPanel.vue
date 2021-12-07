@@ -1,5 +1,6 @@
 <template>
   <div class="right-panel">
+    <!-- 主题 -->
     <theme
       class="icon-hover theme"
       :title="t('navbar.theme')"
@@ -9,6 +10,8 @@
       :fill="color"
       @click="handleChangeTheme"
     />
+
+    <!-- 通知 -->
     <el-popover v-if="settings.notice" placement="bottom" :width="320" trigger="hover">
       <template #reference>
         <remind class="icon-hover refresh" theme="outline" size="16" :fill="color" :strokeWidth="3" />
@@ -24,8 +27,13 @@
       </div>
     </el-popover>
 
-    <FullScreen :color="color" v-if="settings.fullScreen" @refresh="onRefresh" />
+    <!-- 全屏 -->
+    <FullScreen :color="color" v-if="settings.fullScreen" />
+
+    <!-- 语言 -->
     <LangChange :color="color" />
+
+    <!-- 刷新 -->
     <refresh
       v-if="settings.refresh"
       :title="t('navbar.refresh')"
@@ -36,45 +44,37 @@
       :fill="color"
       :strokeWidth="4"
     />
+
+    <!-- 头像 & 名字 -->
     <AvatarStart :color="color" />
+
+    <!-- 主题设置弹框 -->
     <ThemeSetting />
   </div>
 </template>
 
 <script setup>
-import { computed, nextTick, ref, defineProps } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import { noticeList } from './data'
-
 import FullScreen from '@/components/FullScreen/index.vue'
 import Cell from '@/components/Cell/index.vue'
 import LangChange from '@/components/LangChange/index.vue'
-
 import { useI18n } from 'vue-i18n'
-
 import { useStore } from 'vuex'
+
 defineProps({
-  color: {
-    type: String,
-    default: '#666'
-  }
+  color: { type: String, default: '#666' } // 颜色
 })
+
 const { t } = useI18n()
-
 const store = useStore()
-
 const activeName = ref('first')
-
-const settings = computed(() => {
-  return store.getters['setting/settings']
-})
-
-const onRefresh = () => { }
+const settings = computed(() => store.getters['setting/settings'])
 
 const handleRefresh = () => {
+  console.log('routerView')
   store.dispatch('setting/setRouterView', false)
-  nextTick(() => {
-    store.dispatch('setting/setRouterView', true)
-  })
+  nextTick(() => { store.dispatch('setting/setRouterView', true) })
 }
 
 const handleChangeTheme = () => {

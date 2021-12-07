@@ -1,6 +1,7 @@
 <template>
   <div class="nav-bar-container">
-    <el-row :gutter="15">
+    <!-- :gutter="15" -->
+    <el-row>
       <el-col :xs="4" :sm="12" :md="12" :lg="12" :xl="12" v-if="settings.mode !== ''">
         <div class="left-panel">
           <component
@@ -13,12 +14,14 @@
             fill="#666"
             @click="handleCollapse"
           />
+          <!-- 面包屑 -->
           <template v-if="isBreadcrumb">
             <BreadcrumbStart class="hidden-xs-only" />
           </template>
         </div>
       </el-col>
       <el-col :xs="20" :sm="12" :md="12" :lg="12" :xl="12">
+        <!-- 右侧操作栏 -->
         <RightPanel />
       </el-col>
     </el-row>

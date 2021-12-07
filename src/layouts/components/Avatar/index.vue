@@ -1,7 +1,6 @@
 <template>
   <el-dropdown @command="handleCommand">
     <span class="avatar-dropdown" :style="{ color }">
-      <!--<el-avatar class="user-avatar" :src="avatar"></el-avatar>-->
       <img class="user-avatar" :src="avatar" alt="" />
       <div class="user-name">
         {{ userName }}
@@ -18,7 +17,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps } from 'vue'
+import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { ElMessageBox } from 'element-plus'
 import { setting } from '@/config/setting'
@@ -27,7 +26,7 @@ import { useI18n } from 'vue-i18n'
 const { title, recordRoute } = setting
 const { t } = useI18n()
 const avatar = ref('https://i.gtimg.cn/club/item/face/img/2/15922_100.gif')
-const userName = ref('hu-snail')
+const userName = ref('Mr-cheng-web')
 const store = useStore()
 const router = useRouter()
 
@@ -41,7 +40,7 @@ const handleCommand = (command) => {
       handleLogout()
       break
     case 'github':
-      window.open('https://github.com/hu-snail/vue3-admin-element-template')
+      window.open('https://github.com/M-cheng-web/vue3-admin')
       break
     default:
       break
@@ -54,17 +53,15 @@ const handleLogout = () => {
     cancelButtonText: t('btn.cancel'),
     dangerouslyUseHTMLString: true,
     type: 'warning'
-  })
-    .then(async () => {
-      await store.dispatch('user/logout')
-      if (recordRoute) {
-        const { fullPath } = router.currentRoute._value
-        router.push({ path: `/login?redirect=${fullPath}` })
-      } else {
-        router.push('/login')
-      }
-    })
-    .catch(() => { })
+  }).then(async () => {
+    await store.dispatch('user/logout')
+    if (recordRoute) {
+      const { fullPath } = router.currentRoute._value
+      router.push({ path: `/login?redirect=${fullPath}` })
+    } else {
+      router.push('/login')
+    }
+  }).catch(() => { })
 }
 </script>
 

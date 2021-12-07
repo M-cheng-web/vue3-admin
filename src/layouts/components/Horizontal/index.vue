@@ -2,7 +2,7 @@
   <el-container class="horizontal-container">
     <el-header :style="{ 'background-color': menuBgColor }" class="head" :class="{ fixed: settings.fixedHead }">
       <div class="head-nav">
-        <Logo v-if="settings.isLogo" />
+        <LogoStart v-if="settings.isLogo" />
         <el-menu
           class="menu"
           :class="{ 'is-black': isBlack }"
@@ -108,10 +108,10 @@ export default {
   .main {
     width: calc(90% + 40px);
     margin: 50px 20px 0 20px;
-    &[class="el-main main fixed istag"] {
+    &[class="fixed el-main main istag"] {
       margin-top: $base-main-fixed-top;
     }
-    &[class="el-main main fixed"] {
+    &[class="fixed el-main main"] {
       margin-top: $base-main-vertical-fixed-notag-top;
     }
     &[class="el-main main"] {

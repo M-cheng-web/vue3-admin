@@ -14,8 +14,9 @@
 </template>
 
 <script setup>
-import { reactive, computed, defineProps } from 'vue'
+import { reactive, computed } from 'vue'
 import { useStore } from 'vuex'
+
 defineProps({
   color: { type: String, default: '#666' }
 })
@@ -30,12 +31,8 @@ const languages = reactive([
   }
 ])
 
-const language = computed(() => {
-  return store.getters['setting/lang']
-})
-
+const language = computed(() => store.getters['setting/lang'])
 const store = useStore()
-
 const handleSetLanguage = (lang) => {
   store.dispatch('setting/changeLanguage', lang)
   location.reload()

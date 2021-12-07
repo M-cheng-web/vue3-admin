@@ -21,10 +21,13 @@ const messages = {
 }
 
 export const getLocale = () => {
+  // 获取cookie中存储的语言
   const cookieLanguage = getLanguage()
   if (cookieLanguage) {
     return cookieLanguage
   }
+
+  // 获取浏览器的地区
   const language = navigator.language.toLowerCase()
   const locales = Object.keys(messages)
   for (const locale of locales) {

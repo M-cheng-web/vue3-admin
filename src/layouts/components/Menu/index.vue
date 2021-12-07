@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { defineProps, computed, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { setting } from '@/config/setting'

@@ -2,7 +2,7 @@
   <el-drawer
     :title="t('settings.title')"
     v-model="settings.isDrawerSetting"
-    :direction="direction"
+    direction="rtl"
     :before-close="handleClose"
     destroy-on-close
     :size="320"
@@ -19,8 +19,7 @@
                 placeholder="请选择"
                 @change="handleChangeMode"
               >
-                <el-option v-for="item in setting.modeOption" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
+                <el-option v-for="item in setting.modeOption" :key="item.value" :label="item.label" :value="item.value" />
               </el-select>
             </el-form-item>
             <el-form-item :label="t('settings.theme')">
@@ -31,63 +30,49 @@
                 placeholder="请选择"
                 @change="handleChangeTheme"
               >
-                <el-option
-                  v-for="item in setting.colorOptions"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                >
-                </el-option>
+                <el-option v-for="item in setting.colorOptions" :key="item.value" :label="item.label" :value="item.value" />
               </el-select>
             </el-form-item>
             <el-form-item label="Logo">
               <el-switch v-model="settings.isLogo" />
             </el-form-item>
             <el-form-item :label="t('settings.tag')">
-              <el-switch @change="handleChangeTag" v-model="setting.tag" />
+              <el-switch @change="changeSetting('changeTag', $event)" v-model="setting.tag" />
             </el-form-item>
             <el-form-item :label="t('settings.breadcurmb')">
-              <el-switch
-                :disabled="settings.mode === 'horizontal'"
-                @change="handleChangeBread"
-                v-model="setting.isBreadcrumb"
-              />
+              <el-switch :disabled="settings.mode === 'horizontal'" @change="changeSetting('changeBreadcrumb', $event)" v-model="setting.isBreadcrumb" />
             </el-form-item>
             <el-form-item :label="t('settings.fixed')">
-              <el-switch :disabled="isMobile" v-model="settings.fixedHead" />
+              <el-switch :disabled="isMobile" @change="changeSetting('changeFixHead', $event)" v-model="settings.fixedHead" />
             </el-form-item>
             <el-form-item :label="t('settings.fullscreen')">
-              <el-switch v-model="settings.fullScreen" />
+              <el-switch @change="changeSetting('changeFullScreen', $event)" v-model="settings.fullScreen" />
             </el-form-item>
             <el-form-item :label="t('settings.refresh')">
-              <el-switch v-model="settings.refresh" />
+              <el-switch @change="changeSetting('changeRefresh', $event)" v-model="settings.refresh" />
             </el-form-item>
             <el-form-item :label="t('settings.notice')">
-              <el-switch v-model="settings.notice" />
+              <el-switch @change="changeSetting('changeNotic', $event)" v-model="settings.notice" />
             </el-form-item>
           </el-form>
         </div>
       </el-scrollbar>
-
-      <div class="drawer-footer">
-        <el-button size="small">{{ t("settings.defaultBtn") }}</el-button>
-        <el-button type="primary" size="small" @click="handleToSave">{{ t("settings.saveBtn") }}</el-button>
-      </div>
     </div>
   </el-drawer>
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch } from 'vue'
+import { reactive, computed, watch } from 'vue'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
-
 import { themeConfig } from '@/config/theme'
+
+const store = useStore()
 const { t } = useI18n()
 const ORIGINAL_THEME = '#409EFF'
 const { themeOptions } = themeConfig
-
-const store = useStore()
+const settings = computed(() => store.getters['setting/settings'])
+const isMobile = computed(() => store.getters['setting/isMobile'])
 
 const setting = reactive({
   tag: true,
@@ -99,7 +84,7 @@ const setting = reactive({
   fullscreen: true,
   refresh: true,
   notice: true,
-  modeOption: [
+  modeOption: [ // 布局
     {
       value: 'vertical',
       label: t('layout.vertical')
@@ -109,7 +94,7 @@ const setting = reactive({
       label: t('layout.horizontal')
     }
   ],
-  colorOptions: [
+  colorOptions: [ // 主题
     {
       value: 'theme1',
       label: t('theme.options.theme1')
@@ -137,38 +122,41 @@ const setting = reactive({
   ]
 })
 
-const direction = ref('rtl')
-
-const settings = computed(() => {
-  return store.getters['setting/settings']
-})
-
-const isMobile = computed(() => {
-  return store.getters['setting/isMobile']
-})
-
-const handleToSave = () => {
-  store.dispatch('setting/setSettingOptions', settings)
+/**
+ * 关闭主题设置弹框
+ */
+const handleClose = () => {
   store.dispatch('setting/setSettingDrawer', false)
 }
 
-const handleChangeTag = (val) => {
-  store.dispatch('setting/setTag', val)
-}
-
-const handleChangeBread = (val) => {
-  store.dispatch('setting/setBreadcrumb', val)
-}
-
+/**
+ * 布局设置
+ */
 const handleChangeMode = (val) => {
+  console.log(val)
   store.dispatch('setting/setSettingOptions', settings)
   store.dispatch('setting/setMode', val)
 }
 
+/**
+ * 主题设置
+ */
 const handleChangeTheme = (val) => {
   store.dispatch('setting/setTheme', val)
 }
 
+/**
+ * 更改设置
+ * logo(changeLogo) / 标签(changeTag) / 面包导航(changeBreadcrumb)
+ * / 固定头部(changeFixHead) / 全屏(changeFullScreen) / 刷新(changeRefresh) / 通知(changeNotic)
+ */
+const changeSetting = (type, val) => {
+  store.dispatch(`setting/${type}`, val)
+}
+
+/**
+ * 获取目标主题的配置
+ */
 const getThemeCluster = (theme) => {
   const tintColor = (color, tint) => {
     let red = parseInt(color.slice(0, 2), 16)
@@ -228,13 +216,17 @@ const getCSSString = (url, variable) => {
   })
 }
 
+/**
+ * 监听主题变化
+ */
 watch(
   () => settings.value.theme,
   async (theme) => {
+    console.log('theme', theme)
     const val = themeOptions[theme].primary
+    if (typeof val !== 'string') return
 
     const oldVal = setting.chalk ? settings.value.theme : ORIGINAL_THEME
-    if (typeof val !== 'string') return
     const themeCluster = getThemeCluster(val.replace('#', ''))
     const originalCluster = getThemeCluster(oldVal.replace('#', ''))
 
@@ -255,12 +247,9 @@ watch(
       const url = 'https://cdn.jsdelivr.net/npm/element-plus/dist/index.css'
       await getCSSString(url, 'chalk')
     }
-    const chalkHandler = getHandler('chalk', 'chalk-style')
-    chalkHandler()
+    getHandler('chalk', 'chalk-style')()
     const styles = [].slice.call(document.querySelectorAll('style')).filter((style) => {
       const text = style.innerText
-      // console.log(text);
-      // console.log(new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text));
       return new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text)
     })
     styles.forEach((style) => {
@@ -273,10 +262,6 @@ watch(
     immediate: true
   }
 )
-
-const handleClose = () => {
-  store.dispatch('setting/setSettingDrawer', false)
-}
 </script>
 
 <script>

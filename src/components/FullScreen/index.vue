@@ -12,24 +12,21 @@
 </template>
 
 <script setup>
-import { defineEmits, computed, defineProps } from 'vue'
+import { defineEmits, computed } from 'vue'
 import screenfull from 'screenfull'
 import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
-
 import { useI18n } from 'vue-i18n'
-const store = useStore()
 
 defineProps({
   color: { type: String, default: '#666' }
 })
+
+const store = useStore()
 const { t } = useI18n()
-
-const isFullScreen = computed(() => {
-  return store.getters['setting/isFullScreen']
-})
-
 const emit = defineEmits(['refresh'])
+
+const isFullScreen = computed(() => store.getters['setting/isFullScreen'])
 const handleClick = () => {
   if (!screenfull.isEnabled) {
     ElMessage.warning('进入全屏失败')

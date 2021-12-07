@@ -37,7 +37,6 @@ watch(
 )
 
 const changeBodyWidth = () => {
-  console.log(123)
   const flag = document.body.getBoundingClientRect().width - 1 < 992
   store.dispatch('setting/changeMobile', flag)
 }
@@ -54,6 +53,5 @@ const changeResize = () => {
   color: #2c3e50;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  border: 1px solid red;
 }
 </style>
