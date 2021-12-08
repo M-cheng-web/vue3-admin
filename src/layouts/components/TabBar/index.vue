@@ -1,5 +1,7 @@
 <template>
   <div id="tabs-bar-container" class="tabs-bar-container" :class="{ horizontal: mode === 'horizontal' }">
+
+    <!-- 左侧的tab组 -->
     <el-tabs
       v-model="tabActive"
       type="card"
@@ -7,17 +9,17 @@
       @tab-click="handleTabClick"
       @tab-remove="handleTabRemove"
     >
-      <el-tab-pane v-for="item in visitedRouteList" :key="item.path" :name="item.path" :closable="!isAffix(item)">
+      <el-tab-pane v-for="item in visitedRouteList" :key="item.path" :name="item.path" :closable="!(item.meta && item.meta.affix)">
         <template #label>
           <div class="item">
             <component class="menu-icon" v-if="item.meta.icon" theme="outline" strokeWidth="3" :is="item.meta.icon" />
-            <span>
-              {{ item.meta.title }}
-            </span>
+            <span>{{ item.meta.title }}</span>
           </div>
         </template>
       </el-tab-pane>
     </el-tabs>
+
+    <!-- 右侧的修改控件 -->
     <el-popover placement="bottom" width="auto" trigger="hover" @show="handleShow" @hide="handleHide">
       <template #reference>
         <span class="more" :class="{ active: visible }" style="cursor: pointer">
@@ -45,11 +47,15 @@ export default {
     const router = useRouter()
     const { t } = useI18n()
 
+    const visitedRouteList = computed(() => store.getters['tabsBar/visitedRoutes']) // 打开过的路由
+    const routes = computed(() => store.getters['routes/routes']) // 全部路由信息
+    const mode = computed(() => store.getters['setting/mode']) // 当前布局模式
+
     const state = reactive({
-      affixtabs: [],
-      tabActive: '',
-      visible: false,
-      commandList: [
+      affixtabs: [], // 需要固定的tab
+      tabActive: '', // 当前选中的tab标签
+      visible: false, // 右侧控件的是否选中
+      commandList: [ // 右侧控件选中弹出的选项
         {
           command: 'refreshRoute',
           text: t('tagsView.refresh'),
@@ -78,12 +84,9 @@ export default {
       ]
     })
 
-    const visitedRouteList = computed(() => store.getters['tabsBar/visitedRoutes'])
-
-    const routes = computed(() => store.getters['routes/routes'])
-
-    const mode = computed(() => store.getters['setting/mode'])
-
+    /**
+     * 过滤出需要固定的tab(固定的意思是不能删除)
+     */
     const filterAffixtabs = (routes) => {
       let tabs = []
       routes.forEach((route) => {
@@ -104,116 +107,112 @@ export default {
       })
       return tabs
     }
+    /**
+     * 初始化tab
+     */
     const inittabs = () => {
       const affixtabs = (state.affixtabs = filterAffixtabs(routes.value))
-      for (const tag of affixtabs) {
+      affixtabs.forEach(tag => {
         if (tag.name) {
           store.dispatch('tabsBar/addVisitedRoute', tag)
         }
+      })
+    }
+    /**
+     * 添加tab
+     */
+    const addtabs = (currentRoute) => {
+      if (currentRoute.name) {
+        store.dispatch('tabsBar/addVisitedRoute', currentRoute)
       }
     }
-    const addtabs = () => {
-      const { name } = router.currentRoute.value
-      if (name) {
-        store.dispatch('tabsBar/addVisitedRoute', router.currentRoute.value)
-      }
-      return false
-    }
-
     watch(
       () => router.currentRoute.value,
-      () => {
+      (currentRoute) => {
         inittabs()
-        addtabs()
-        let tabActiveR = ''
-        visitedRouteList.value.forEach((item) => {
-          if (item.path === router.currentRoute.value.path) {
-            tabActiveR = item.path
-          }
-        })
-        state.tabActive = tabActiveR
+        addtabs(currentRoute)
+        state.tabActive = visitedRouteList.value.find(item => currentRoute.path === item.path).path || ''
       },
       { immediate: true }
     )
 
-    const isActive = (route) => {
-      return route.path === router.currentRoute.value.path
-    }
-    const isAffix = (tag) => {
-      return tag.meta && tag.meta.affix
-    }
-
-    const toLastTag = (visitedRoutes) => {
-      const latestView = visitedRoutes.slice(-1)[0]
-      if (latestView) {
-        router.push(latestView)
-      } else {
-        router.push('/')
-      }
-    }
-
+    // ------------------ 右侧的修改tab控件事件 ------------------
+    /**
+     * tab移除事件
+     */
     const handleTabRemove = async (tabActive) => {
-      let view
-      visitedRouteList.value.forEach((item) => {
-        if (tabActive === item.path) {
-          view = item
-        }
-      })
+      const view = visitedRouteList.value.find((item) => tabActive === item.path)
       const { visitedRoutes } = await store.dispatch('tabsBar/delRoute', view)
-      if (isActive(view)) {
-        toLastTag(visitedRoutes, view)
+      if (view && view.path === router.currentRoute.value.path) {
+        router.push(visitedRoutes.slice(-1)[0] || '/') // 跳转到最后一个tag
       }
     }
-
+    /**
+     * 点击tab事件
+     */
     const handleTabClick = (tab) => {
-      const route = visitedRouteList.value.filter((item, index) => tab.index === index)[0]
+      const route = visitedRouteList.value[tab.index]
       if (router.currentRoute.value.path !== route.path) {
         router.push({
           path: route.path,
           query: route.query,
           fullPath: route.fullPath
         })
-      } else {
-        return false
       }
     }
-
+    /**
+     * 重新加载tab
+     */
     const refreshRoute = async () => {
       store.dispatch('setting/setRouterView', false)
       nextTick(() => {
         store.dispatch('setting/setRouterView', true)
       })
     }
-
+    /**
+     * 关闭其他tab
+     */
     const closeOtherstabs = async () => {
       const view = await toThisTag()
       await store.dispatch('tabsBar/delOthersRoutes', view)
     }
+    /**
+     * 关闭左侧tab
+     */
     const closeLefttabs = async () => {
       const view = await toThisTag()
       await store.dispatch('tabsBar/delLeftRoutes', view)
     }
+    /**
+     * 关闭右侧tab
+     */
     const closeRighttabs = async () => {
       const view = await toThisTag()
       await store.dispatch('tabsBar/delRightRoutes', view)
     }
+    /**
+     * 关闭所有tab
+     */
     const closeAlltabs = async () => {
       const view = await toThisTag()
       const { visitedRoutes } = await store.dispatch('tabsBar/delAllRoutes')
       if (state.affixtabs.some((tag) => tag.path === view.path)) {
         return
       }
-      toLastTag(visitedRoutes, view)
+      router.push(visitedRoutes.slice(-1)[0] || '/') // 跳转到最后一个tag
     }
-
+    /**
+     * 获取当前路由代表的tab栏信息
+     */
     const toThisTag = async () => {
       const { fullPath, path } = router.currentRoute.value
-
-      const view = visitedRouteList.value.filter((item) => item.path === fullPath)[0]
+      const view = visitedRouteList.value.find((item) => item.path === fullPath)
       if (path !== view.path) router.push(view)
       return view
     }
-
+    /**
+     * 右侧操控菜单点击事件
+     */
     const handleCommand = (command) => {
       switch (command) {
         case 'refreshRoute':
@@ -235,11 +234,15 @@ export default {
           return '错误的事件类型'
       }
     }
-
+    /**
+     * 右侧操控菜单显示
+     */
     const handleShow = () => {
       state.visible = true
     }
-
+    /**
+     * 右侧操控菜单隐藏
+     */
     const handleHide = () => {
       state.visible = false
     }
@@ -249,7 +252,6 @@ export default {
       visitedRouteList,
       routes,
       mode,
-      isAffix,
       refreshRoute,
       closeAlltabs,
       closeRighttabs,

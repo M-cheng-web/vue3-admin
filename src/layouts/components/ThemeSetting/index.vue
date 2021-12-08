@@ -11,7 +11,8 @@
       <el-scrollbar height="85vh">
         <div class="form">
           <el-form label-width="100px" label-position="left">
-            <el-form-item :label="t('settings.layout')">
+            <!-- element-plus 的菜单组件布局有问题,会卡死,暂时不知道什么原因 -->
+            <!-- <el-form-item :label="t('settings.layout')">
               <el-select
                 class="theme-select-width"
                 v-model="settings.mode"
@@ -21,7 +22,7 @@
               >
                 <el-option v-for="item in setting.modeOption" :key="item.value" :label="item.label" :value="item.value" />
               </el-select>
-            </el-form-item>
+            </el-form-item> -->
             <el-form-item :label="t('settings.theme')">
               <el-select
                 class="theme-select-width"
@@ -132,11 +133,10 @@ const handleClose = () => {
 /**
  * 布局设置
  */
-const handleChangeMode = (val) => {
-  console.log(val)
-  store.dispatch('setting/setSettingOptions', settings)
-  store.dispatch('setting/setMode', val)
-}
+// const handleChangeMode = (val) => {
+//   store.dispatch('setting/setSettingOptions', settings)
+//   store.dispatch('setting/setMode', val)
+// }
 
 /**
  * 主题设置

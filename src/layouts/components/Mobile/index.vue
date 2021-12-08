@@ -11,8 +11,8 @@
         </el-main>
       </el-container>
     </el-container>
-    <el-drawer v-model="isDrawer" direction="ltr" :with-header="false" @close="closeDrawer">
-      <Menu />
+    <el-drawer v-model="isDrawer" :size="240" direction="ltr" :with-header="false" @close="closeDrawer">
+      <MenuStart />
     </el-drawer>
   </div>
 </template>
@@ -53,23 +53,26 @@ export default {
     right: 0;
     left: 0;
     transition: all $base-transition-time-4;
-  }
-  .header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: $base-z-index-999;
-    padding: 0;
-    transition: all $base-transition-time-4;
-  }
-  .main {
-    position: relative;
-    top: $base-main-mobile-top;
-    &.no-tag {
-      top: $base-main-mobile-no-tag-top;
+    .header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: $base-z-index-999;
+      padding: 0;
+      transition: all $base-transition-time-4;
     }
-    background-color: $base-content-bg-color;
+    .main {
+      position: relative;
+      top: $base-main-mobile-top;
+      &.no-tag {
+        top: $base-main-mobile-no-tag-top;
+      }
+      background-color: $base-content-bg-color;
+    }
+  }
+  .drawer {
+    border: 1px solid red;
   }
   :deep(.el-menu) {
     border-right: $base-border-none !important;

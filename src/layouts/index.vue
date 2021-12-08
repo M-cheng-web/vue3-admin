@@ -20,7 +20,7 @@
           </el-main>
         </el-container>
       </el-container>
-      <HorizontalStart v-if="mode === 'horizontal'" />
+      <!-- <HorizontalStart v-if="mode === 'horizontal'" /> -->
       <el-backtop />
     </template>
   </div>

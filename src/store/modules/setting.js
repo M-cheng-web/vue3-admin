@@ -162,7 +162,6 @@ const actions = {
    * 是否刷新路由
    */
   setRouterView: ({ commit }, flag) => {
-    console.log('flag', flag)
     commit('SET_ROUTER_VIEW', flag)
   },
   /**
