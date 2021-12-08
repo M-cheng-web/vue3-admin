@@ -129,6 +129,9 @@ export default {
     watch(
       () => router.currentRoute.value,
       (currentRoute) => {
+        if (currentRoute.path === '/login') {
+          return
+        }
         inittabs()
         addtabs(currentRoute)
         state.tabActive = visitedRouteList.value.find(item => currentRoute.path === item.path).path || ''

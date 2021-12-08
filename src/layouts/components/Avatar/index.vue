@@ -57,7 +57,8 @@ const handleLogout = () => {
     await store.dispatch('user/logout')
     if (recordRoute) {
       const { fullPath } = router.currentRoute._value
-      router.push({ path: `/login?redirect=${fullPath}` })
+      router.push(`/login?redirect=${fullPath}`)
+      // router.push({ path: `/login?redirect=${fullPath}` })
     } else {
       router.push('/login')
     }

@@ -222,7 +222,6 @@ const getCSSString = (url, variable) => {
 watch(
   () => settings.value.theme,
   async (theme) => {
-    console.log('theme', theme)
     const val = themeOptions[theme].primary
     if (typeof val !== 'string') return
 

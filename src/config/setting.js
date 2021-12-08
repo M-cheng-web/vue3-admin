@@ -38,7 +38,7 @@ export const setting = {
 
   tokenName: 'accessToken', // token名称
 
-  loginInterception: false, // 是否开启登录拦截
+  loginInterception: true, // 是否开启登录拦截
 
   tokenTableName: 'vue3-admin-template', // token在localStorage、sessionStorage存储的key的名称
 
@@ -50,9 +50,9 @@ export const setting = {
 
   storage: 'localStorage', // token存储位置localStorage sessionStorage
 
-  title: 'vue3-admin-template', // 标题
+  title: 'vue3-admin', // 标题
 
-  copyright: '© hu-snail-2021 vue3-admin-element-template', // 版权信息
+  copyright: '', // 版权信息
 
   footerCopyright: true, // 是否显示页面底部自定义版权信息
 

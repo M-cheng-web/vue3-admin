@@ -72,7 +72,6 @@ const activeName = ref('first')
 const settings = computed(() => store.getters['setting/settings'])
 
 const handleRefresh = () => {
-  console.log('routerView')
   store.dispatch('setting/setRouterView', false)
   nextTick(() => { store.dispatch('setting/setRouterView', true) })
 }

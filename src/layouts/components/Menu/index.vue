@@ -69,11 +69,9 @@ const defaultActive = computed(() => {
 })
 
 const handleOpen = (key, keyPath) => {
-  // console.log('open:', key, keyPath)
 }
 
 const handleClose = (key, keyPath) => {
-  // console.log('close:', key, keyPath)
 }
 </script>
 
