@@ -21,11 +21,10 @@ router.beforeResolve(async (to, from, next) => {
   let hasToken = store.getters['user/accessToken']
   if (!loginInterception) hasToken = true
 
-  console.log('ssss')
-
   if (hasToken) {
     if (to.path === '/login') {
-      next({ path: '/' })
+      // next({ path: '/' })
+      next()
       NProgressAction('done')
     } else {
       const hasPermissions =

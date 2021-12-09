@@ -38,6 +38,9 @@ export function convertRouter (routers) {
   return routers.map((route) => setRoutes(route, asyncRoutes))
 }
 
+/**
+ * 根据权限过滤路由
+ */
 export function filterAsyncRoutes (routes, permissions) {
   const finallyRoutes = []
   routes.forEach((route) => {

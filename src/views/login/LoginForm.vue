@@ -98,7 +98,6 @@ export default {
           state.loading = true
           store.dispatch('user/login', state.ruleForm).then(() => {
             const routerPath = state.redirect === '/404' || state.redirect === '/401' ? '/' : state.redirect
-            console.log('routerPath', routerPath)
             router.push(routerPath)
             state.loading = false
           })
@@ -130,6 +129,7 @@ export default {
   }
   .login-btn {
     width: 100%;
+    background-color: #409eff !important;
   }
   .login-check {
     display: flex;
