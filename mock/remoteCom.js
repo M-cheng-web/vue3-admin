@@ -1,6 +1,13 @@
-const MyComponent = (function () {
+(function (global, factory) {
+  window.myComponent = factory()
+  // typeof exports === 'object' && typeof module !== 'undefined'
+  //   ? module.exports = factory()
+  //   : typeof define === 'function' && define.amd
+  //     ? define(factory)
+  //     : (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.MyComponent = factory())
+})(this, function () {
   'use strict'
-
+  console.log(33)
   //
   //
   //
@@ -121,5 +128,6 @@ const MyComponent = (function () {
     undefined,
     undefined
   )
+
   return __vue_component__
-})()
+})

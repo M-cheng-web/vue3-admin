@@ -1,27 +1,26 @@
 <template>
   <div class="remote">
-    <component v-if="mode" class="remote-test" :is="mode" v-bind="$attrs" />
+    {{ mode }}
+    <component class="remote-test" :is="mode" v-bind="$attrs" />
     asdasdasd
   </div>
 </template>
 
 <script setup>
 import { getPop } from '@/api/remote'
-import { onMounted, ref } from 'vue'
+import { onMounted, shallowRef } from 'vue'
 import scriptLoad from '@/utils/scriptLoad'
+import '../../../mock/remoteCom'
 
 onMounted(() => {
   const a = false
   if (a) mountCom('//yun.tuia.cn/tuia/cdn/remote/rollup.js')
-  getPop().then(res => {
-    console.log(res.data.publicKey)
-    console.log('window.myComponent', window.myComponent)
 
-    mode.value = res.data.publicKey
-  })
+  getPop().then(res => {})
 })
 
-const mode = ref('')
+console.log('window.myComponent', window.myComponent)
+const mode = shallowRef(window.myComponent)
 
 const mountCom = async (remoteUrl) => {
   // 模拟node环境
@@ -32,7 +31,7 @@ const mountCom = async (remoteUrl) => {
   await scriptLoad(remoteUrl)
 
   // 挂载在mode
-  mode.value = window.module.exports
+  // mode.value = window.module.exports
 
   // 清除
   delete window.module
