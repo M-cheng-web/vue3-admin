@@ -3,29 +3,28 @@ import App from './App.vue'
 
 import 'element-plus/theme-chalk/display.css'
 
-// permission 权限文件
+// ------------------- permission 权限文件 -------------------
 import './config/permission'
 
-// 路由
+// ------------------- 路由 -------------------
 import router from './router/index'
 
-// vuex
+// ------------------- vuex -------------------
 import store from './store'
 
-// 注册字节跳动图标
+// ------------------- 注册字节跳动图标 -------------------
 import iconPark from './plugin/icon-park'
 
-// 国际化
+// ------------------- 国际化 -------------------
 import loadI18n from './plugin/i18n'
 
-// layout的一些组件全局注册
+// ------------------- layout的一些组件全局注册 -------------------
 import layoutComp from './layouts/components/export'
 
 const app = createApp(App)
-layoutComp(app)
-
 app.use(store)
 app.use(router)
+layoutComp(app)
 iconPark(app)
 loadI18n(app)
 
@@ -44,3 +43,5 @@ app.mount('#app')
 
 // 但是
 // 想用mockjs的话  必须用 NODE_ENV=development 的方式才可以 这是为什么?
+
+// --mode development 是webpack自带的

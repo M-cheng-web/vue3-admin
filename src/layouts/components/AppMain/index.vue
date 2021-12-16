@@ -1,6 +1,6 @@
 <template>
   <div v-if="store.getters['setting/routerView']" class="app-main-container">
-    <!-- <transition mode="out-in" name="fade-transform">
+    <!-- <transition name="component-fade" mode="out-in">
       <router-view class="app-main-height" />
     </transition> -->
 
@@ -31,6 +31,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.fade-transform-enter-active,
+.fade-transform-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.fade-transform-enter-from,
+.fade-transform-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
 .app-main-container {
   position: relative;
   box-sizing: border-box;
