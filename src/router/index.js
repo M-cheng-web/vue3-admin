@@ -13,18 +13,6 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '/index',
-    name: 'Index',
-    component: () => import('@/views/index/index.vue'),
-    hidden: true, // 这个主要是先加载,控制台不会报警告的作用
-    meta: {
-      title: global.t('route.home'),
-      icon: 'home',
-      affix: true,
-      noKeepAlive: true
-    }
-  },
-  {
     path: '/401',
     name: '401',
     component: () => import('@/views/errorPage/401.vue'),
@@ -159,9 +147,11 @@ const router = createRouter({
 })
 
 // 重置路由
+// 这里有问题,暂时不要用
 export function resetRouter () {
   router.getRoutes().forEach((route) => {
     const { name } = route
+    console.log('name', name)
     if (name) {
       router.hasRoute(name) && router.removeRoute(name)
     }

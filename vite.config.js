@@ -24,8 +24,8 @@ export default defineConfig({
     viteMockServe({
       mockPath: 'mock',
       supportTs: false,
-      localEnabled: isDev,
-      prodEnabled: !isDev,
+      localEnabled: isDev, // 测试环境是否使用
+      prodEnabled: !isDev, // 生产环境是否使用
       injectCode: `
           import { setupProdMockServer } from './mockProdServer';
           setupProdMockServer();

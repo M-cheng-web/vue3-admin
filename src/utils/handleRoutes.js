@@ -1,9 +1,9 @@
 import { asyncRoutes } from '@/router'
 
 /**
- * 处理后端路由数据
+ * 处理后端路由数据(洗一遍数据而已,可以根据后端返回的再做额外处理)
  * route 路由数据
- * list 前端路由 asyncRoutes配置项
+ * list 前端路由(asyncRoutes配置项)
  */
 const setRoutes = (route, list) => {
   list.forEach((item) => {

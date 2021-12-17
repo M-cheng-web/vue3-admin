@@ -55,13 +55,7 @@ const handleLogout = () => {
     type: 'warning'
   }).then(async () => {
     await store.dispatch('user/logout')
-    if (recordRoute) {
-      const { fullPath } = router.currentRoute._value
-      router.push(`/login?redirect=${fullPath}`)
-      // router.push({ path: `/login?redirect=${fullPath}` })
-    } else {
-      router.push('/login')
-    }
+    router.push(recordRoute ? `/login?redirect=${router.currentRoute._value.fullPath}` : '/login')
   }).catch(() => { })
 }
 </script>

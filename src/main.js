@@ -21,12 +21,16 @@ import loadI18n from './plugin/i18n'
 // ------------------- layout的一些组件全局注册 -------------------
 import layoutComp from './layouts/components/export'
 
+// ------------------- 自定义指令 -------------------
+import directiveInstall from './utils/directive'
+
 const app = createApp(App)
 app.use(store)
 app.use(router)
 layoutComp(app)
 iconPark(app)
 loadI18n(app)
+directiveInstall(app)
 
 app.mount('#app')
 

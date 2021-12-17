@@ -1,4 +1,4 @@
-const prefix = 'https://gitee.com/hu-snail/vue3-admin-element-template/raw/master/src/assets/'
+const prefix = ''
 const list = [
   {
     title: '',

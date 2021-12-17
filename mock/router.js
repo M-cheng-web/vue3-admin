@@ -60,6 +60,8 @@ const data = [
     ]
   }
 ]
+
+// 剩下的在这边区分不同的data 模拟真实场景就行了
 export default [
   {
     url: '/api/menu/navigate',

@@ -1,5 +1,6 @@
 <template>
   <div class="index-start">
+    <input v-control="'CONTROL-1'" />
     <el-row :gutter="10">
       <el-col class="box-col" :xs="24" :sm="24" :md="24" :lg="16" :xl="16">
         <div class="box" v-for="(item, index) in boxList" :key="index">{{ item }}</div>
@@ -7,17 +8,14 @@
       <el-col class="text-col" :xs="24" :sm="24" :md="24" :lg="8" :xl="8"></el-col>
     </el-row>
   </div>
-  <Remote />
 </template>
 
 <script setup>
 import { reactive } from 'vue'
-import Remote from '@/components/Remote/index.vue'
 
 const boxList = reactive([
   1, 2, 3, 4, 5
 ])
-
 </script>
 
 <script>

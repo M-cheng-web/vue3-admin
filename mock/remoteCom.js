@@ -1,13 +1,12 @@
 (function (global, factory) {
-  window.myComponent = factory()
-  // typeof exports === 'object' && typeof module !== 'undefined'
-  //   ? module.exports = factory()
-  //   : typeof define === 'function' && define.amd
-  //     ? define(factory)
-  //     : (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.MyComponent = factory())
+  // window.myComponent = factory()
+  typeof exports === 'object' && typeof module !== 'undefined'
+    ? module.exports = factory()
+    : typeof define === 'function' && define.amd
+      ? define(factory)
+      : (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.MyComponent = factory())
 })(this, function () {
   'use strict'
-  console.log(33)
   //
   //
   //
@@ -94,6 +93,7 @@
 
   /* template */
   const __vue_render__ = function () {
+    console.log('thisthis', this)
     const _vm = this
     const _h = _vm.$createElement
     const _c = _vm._self._c || _h

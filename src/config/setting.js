@@ -58,7 +58,7 @@ export const setting = {
 
   keepAliveMaxNum: 99, // 缓存路由的最大数量
 
-  authentication: 'intelligence', // intelligence 前端控制路由  / all 后端控制
+  authentication: 'all', // intelligence 前端控制路由  / all 后端控制
 
   recordRoute: true, // token失效回退到登录页时是否记录本次的路由
 

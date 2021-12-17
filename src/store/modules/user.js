@@ -5,7 +5,7 @@
 import { getUserInfo, login } from '@/api/user'
 import { getAccessToken, removeAccessToken, setAccessToken } from '@/utils/accessToken'
 import { setting } from '@/config/setting'
-import { resetRouter } from '@/router'
+// import { resetRouter } from '@/router'
 import i18n from '@/locales'
 import { ElMessage, ElNotification } from 'element-plus'
 
@@ -96,9 +96,8 @@ const actions = {
    * 用户退出登录
    */
   async logout ({ dispatch }) {
-    // await logout(state.accessToken);
     await dispatch('resetAccessToken')
-    await resetRouter()
+    // await resetRouter() 暂时不用,否则二次登录会有死循环bug
   },
   /**
    * 清空用户相关信息

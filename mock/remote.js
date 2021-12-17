@@ -1,3 +1,6 @@
+// 动态组件mock
+// 目的是让后端传给前端组件,然后前端去渲染
+
 // import publicKey from './remoteCom'
 
 export default [

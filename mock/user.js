@@ -1,7 +1,7 @@
 const accessTokens = {
   admin: 'admin-accessToken',
   editor: 'editor-accessToken',
-  test: 'test-accessToken'
+  visitor: 'visitor-accessToken'
 }
 
 export default [
@@ -64,9 +64,9 @@ export default [
         permissions = ['editor']
         username = 'editor'
       }
-      if (accessToken === 'test-accessToken') {
-        permissions = ['admin', 'editor']
-        username = 'test'
+      if (accessToken === 'visitor-accessToken') {
+        permissions = ['visitor']
+        username = 'visitor'
       }
       return {
         code: 200,

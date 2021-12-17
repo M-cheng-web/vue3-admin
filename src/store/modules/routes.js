@@ -27,21 +27,22 @@ const mutations = {
 }
 const actions = {
   /**
-   * 设置路由(设置某个路由)
+   * 设置路由(这里是设置前端自己配置的异步路由)
    */
   async setRoutes ({ commit }, permissions) {
-    // 开源版只过滤动态路由permissions，admin不再默认拥有全部权限
     const finallyAsyncRoutes = await filterAsyncRoutes([...asyncRoutes], permissions)
     commit('setRoutes', finallyAsyncRoutes)
     return finallyAsyncRoutes
   },
   /**
-   * 设置所有路由
+   * 设置所有路由(这里是设置后端给的异步路由,不会设置前端自己配置的异步路由)
    */
   async setAllRoutes ({ commit }) {
     const { data } = await getRouterList()
+    console.log('data', data)
     // data.push({ path: '*', redirect: '/404', hidden: true });
     const accessRoutes = convertRouter(data)
+    console.log('accessRoutes', accessRoutes)
     commit('setAllRoutes', accessRoutes)
     return accessRoutes
   },
