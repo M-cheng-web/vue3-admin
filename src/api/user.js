@@ -13,7 +13,7 @@ export const getUserInfo = (accessToken) => {
   return request({
     url: '/userInfo',
     method: 'get',
-    data: {
+    params: {
       [tokenName]: accessToken
     }
   })

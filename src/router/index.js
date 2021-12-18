@@ -44,6 +44,41 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/comp',
+    component: Layout,
+    name: 'Comp',
+    meta: { title: '权限菜单分类Demo', icon: 'home' },
+    children: [
+      {
+        path: '/admin',
+        name: 'admin',
+        component: () => import('@/views/demo-admin/index.vue'),
+        meta: {
+          title: '管理员',
+          icon: 'home'
+        }
+      },
+      {
+        path: '/editor',
+        name: 'editor',
+        component: () => import('@/views/demo-editor/index.vue'),
+        meta: {
+          title: '可编辑人员',
+          icon: 'home'
+        }
+      },
+      {
+        path: '/visitor',
+        name: 'visitor',
+        component: () => import('@/views/demo-visitor/index.vue'),
+        meta: {
+          title: '游客',
+          icon: 'home'
+        }
+      }
+    ]
+  },
   // {
   //   path: '/comp',
   //   component: Layout,
@@ -151,7 +186,6 @@ const router = createRouter({
 export function resetRouter () {
   router.getRoutes().forEach((route) => {
     const { name } = route
-    console.log('name', name)
     if (name) {
       router.hasRoute(name) && router.removeRoute(name)
     }

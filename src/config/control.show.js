@@ -14,5 +14,5 @@
 export default {
   'CONTROL-1': ['admin'], // 管理员
   'CONTROL-2': ['visitor'], // 游客
-  'CONTROL-3': ['admin', 'visitor'] // 管理员 + 游客
+  'CONTROL-3': ['admin', 'visitor', 'editor'] // 管理员 + 游客 + 可编辑人员
 }

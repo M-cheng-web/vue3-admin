@@ -49,6 +49,11 @@
         <google theme="outline" size="24" fill="#333" />
       </div>
     </el-form-item>
+
+    <!-- 账户提示 -->
+    <div style="font-size: 16px">
+      共有三个权限用户: admin,editor,visitor(密码随便填)
+    </div>
   </el-form>
 </template>
 
@@ -98,7 +103,17 @@ export default {
           state.loading = true
           store.dispatch('user/login', state.ruleForm).then(() => {
             const routerPath = state.redirect === '/404' || state.redirect === '/401' ? '/' : state.redirect
-            router.push(routerPath)
+            // 在 authentication 为 all的情况下,要考虑到不同的用户是会有不用的权限页面展示的,那么如果历史记录的是A用户的专属页面,而我这个时候登录B用户
+            // 所以这里要做一些处理,有两种方案
+            // 一: 如果为 all的情况下,直接跳转到index页面
+            // 二: 记录每个页面的权限,如果当前登录的用户权限不满足要跳转的目标页面,那么再跳转到index页面
+
+            // 这里用第一种方案
+            // router.push(store.getters['setting/authentication'] === 'all' ? '/index' : routerPath)
+
+            // 或者也可以这样用,当目标路由不存在会报错,报错了再跳到index页面
+            router.push(routerPath).catch((e) => { router.push('/index') })
+
             state.loading = false
           })
         }

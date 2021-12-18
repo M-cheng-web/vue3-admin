@@ -48,7 +48,7 @@ router.beforeResolve(async (to, from, next) => {
           } else if (authentication === 'all') {
             accessRoutes = await store.dispatch('routes/setAllRoutes')
           }
-          accessRoutes.forEach((item) => { console.log(item); router.addRoute(item) })
+          accessRoutes.forEach((item) => { router.addRoute(item) })
           next({ ...to, replace: true })
         } catch (e) {
           console.log('路由报错', e)

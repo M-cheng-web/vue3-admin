@@ -53,7 +53,8 @@ export default [
     url: '/api/userInfo',
     type: 'get',
     response (config) {
-      const { accessToken } = config.body
+      const { accessToken } = config.query
+      console.log('accessToken', accessToken)
       let permissions = ['admin']
       let username = 'admin'
       if (accessToken === 'admin-accessToken') {
@@ -68,6 +69,7 @@ export default [
         permissions = ['visitor']
         username = 'visitor'
       }
+
       return {
         code: 200,
         msg: 'success',

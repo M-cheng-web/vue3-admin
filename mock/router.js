@@ -21,53 +21,113 @@ const data = [
     path: '/comp',
     component: 'Layout',
     name: 'Comp',
-    meta: { title: '组件', icon: '' },
+    meta: { title: '权限菜单分类Demo', icon: '' },
     children: [
       {
-        path: '/iconPark',
-        name: 'IconPark',
-        component: '',
+        path: '/admin',
+        name: 'admin',
         meta: {
-          title: '图标'
-        },
-        children: [
-          {
-            path: '/iconPark2',
-            name: 'IconPark2',
-            component: '',
-            meta: {
-              title: '图标2211'
-            }
-          }
-        ]
-      },
-      {
-        path: '/iconPark233',
-        name: 'IconPark3',
-        component: () => '',
-        meta: {
-          title: '图标2233'
-        }
-      },
-      {
-        path: '/iconPark234',
-        name: 'IconPark3',
-        component: () => '',
-        meta: {
-          title: '测试'
+          title: '管理员'
         }
       }
     ]
   }
 ]
 
-// 剩下的在这边区分不同的data 模拟真实场景就行了
+const data2 = [
+  {
+    path: '/',
+    component: 'Layout',
+    redirect: 'index',
+    children: [
+      {
+        path: '/index',
+        name: 'Index',
+        component: '',
+        meta: {
+          title: '首页',
+          icon: 'home',
+          affix: true,
+          noKeepAlive: true
+        }
+      }
+    ]
+  },
+  {
+    path: '/comp',
+    component: 'Layout',
+    name: 'Comp',
+    meta: { title: '权限菜单分类Demo', icon: '' },
+    children: [
+      {
+        path: '/editor',
+        name: 'editor',
+        meta: {
+          title: '可编辑人员'
+        }
+      }
+    ]
+  }
+]
+
+const data3 = [
+  {
+    path: '/',
+    component: 'Layout',
+    redirect: 'index',
+    children: [
+      {
+        path: '/index',
+        name: 'Index',
+        component: '',
+        meta: {
+          title: '首页',
+          icon: 'home',
+          affix: true,
+          noKeepAlive: true
+        }
+      }
+    ]
+  },
+  {
+    path: '/comp',
+    component: 'Layout',
+    name: 'Comp',
+    meta: { title: '游客', icon: '' },
+    children: [
+      {
+        path: '/visitor',
+        name: 'visitor',
+        meta: {
+          title: '游客'
+        }
+      }
+    ]
+  }
+]
+
 export default [
   {
     url: '/api/menu/navigate',
     type: 'post',
-    response () {
-      return { code: 200, msg: 'success', data: data }
+    response (config) {
+      const { accesstoken } = config.headers
+      let permissionsData = data
+      switch (accesstoken) {
+        case 'admin-accessToken':
+          permissionsData = data
+          break
+        case 'editor-accessToken':
+          permissionsData = data2
+          break
+        case 'visitor-accessToken':
+          permissionsData = data3
+          break
+        default:
+          break
+      }
+
+      return { code: 200, msg: 'success', data: permissionsData }
     }
   }
 ]

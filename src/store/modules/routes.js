@@ -39,10 +39,7 @@ const actions = {
    */
   async setAllRoutes ({ commit }) {
     const { data } = await getRouterList()
-    console.log('data', data)
-    // data.push({ path: '*', redirect: '/404', hidden: true });
     const accessRoutes = convertRouter(data)
-    console.log('accessRoutes', accessRoutes)
     commit('setAllRoutes', accessRoutes)
     return accessRoutes
   },

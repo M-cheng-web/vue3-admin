@@ -8,7 +8,7 @@ import { getLanguage, setLanguage, setSettings, getSettings } from '@/utils/cook
 
 const { mode, theme, fixedHead, fullScreen, refresh, collapse, notice, isBreadcrumb, isLogo, tag } =
   themeConfig
-const { lang } = setting
+const { lang, authentication } = setting
 
 const state = {
   routerView: true, // 是否显示路由
@@ -26,7 +26,8 @@ const state = {
   isBreadcrumb, // 是否显示面包导航
   isLogo, // 是否显示logo
   tag, // 是否显示标签
-  lang: getLanguage() || lang // 当前语言
+  lang: getLanguage() || lang, // 当前语言
+  authentication // intelligence 前端控制路由  / all 后端控制
 }
 
 const getters = {
@@ -45,7 +46,8 @@ const getters = {
   tag: (state) => state.tag,
   mode: (state) => state.mode,
   settings: (state) => state,
-  lang: (state) => state.lang
+  lang: (state) => state.lang,
+  authentication: (state) => state.authentication
 }
 
 const mutations = {
