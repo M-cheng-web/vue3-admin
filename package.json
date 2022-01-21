@@ -20,7 +20,8 @@
     "vue": "^3.2.16",
     "vue-i18n": "^9.1.7",
     "vue-router": "^4.0.12",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "@web-tracing/vue": "^1.4.1-beta.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.10.1",

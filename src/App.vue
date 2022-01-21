@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { onMounted, computed, ref, watch } from 'vue'
+import { onMounted, computed, ref, watch, getCurrentInstance } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import i18n from '@/locales'
@@ -22,8 +22,14 @@ const localLanguage = computed(() => {
   return i18n.global.messages[locale]
 })
 
+const internalInstance = getCurrentInstance()
+
+// 获取埋点插件方法
+const tracing = internalInstance.appContext.config.globalProperties.$trace
+
 // 页面挂载后判断当前是手机端还是PC
 onMounted(() => {
+  console.log('onMounted', tracing)
   changeBodyWidth()
   window.addEventListener('resize', changeResize)
 })
