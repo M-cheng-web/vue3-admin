@@ -14,7 +14,7 @@ export default (app) => {
     }
 
     if (!showArr.includes(userPermissions[0])) {
-      el.parentNode.removeChild(el) // 清楚当前元素
+      el.parentNode.removeChild(el) // 清除当前元素
     }
   })
 }

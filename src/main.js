@@ -25,6 +25,7 @@ import layoutComp from './layouts/components/export'
 import directiveInstall from './utils/directive'
 
 const app = createApp(App)
+
 app.use(store)
 app.use(router)
 layoutComp(app)
@@ -33,19 +34,3 @@ loadI18n(app)
 directiveInstall(app)
 
 app.mount('#app')
-
-// NODE_ENV=development 和 --mode development 有什么差别?
-// 初步验证:
-
-// 用 NODE_ENV=uat 会导致的情况
-// 1. process.env.NODE_ENV 为 development
-// 2. 拿不到其他配置项了(import.meta.env.VITE_APP_WEB_URL 和 process.env.VITE_APP_WEB_URL 都拿不到)
-
-// 用 --mode uat 会导致的情况
-// 1. process.env.NODE_ENV 为 uat
-// 2. import.meta.env.VITE_APP_WEB_URL 可以拿到配置项
-
-// 但是
-// 想用mockjs的话  必须用 NODE_ENV=development 的方式才可以 这是为什么?
-
-// --mode development 是webpack自带的
