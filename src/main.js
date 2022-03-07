@@ -24,8 +24,15 @@ import layoutComp from './layouts/components/export'
 // ------------------- 自定义指令 -------------------
 import directiveInstall from './utils/directive'
 
-const app = createApp(App)
+// ------------------- 埋点,性能监控 -------------------
+import webtracing from '@web-tracing/vue'
 
+const app = createApp(App)
+app.use(webtracing, {
+  requestUrl: 'http://8.129.19.55:8081/sys-file/test-receive',
+  appName: 'chengxh',
+  event: true
+})
 app.use(store)
 app.use(router)
 layoutComp(app)
